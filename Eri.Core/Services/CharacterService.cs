@@ -1,14 +1,17 @@
-﻿using Eri.Core.Models;
+﻿using Eri.Core.Interfaces.Repository;
+using Eri.Core.Models;
 using System;
 
 namespace Eri.Core.Services;
 
 public class CharacterService
 {
+    public readonly ICharacterRepository _characterRepository;
     public readonly AnimeService _animeService;
 
-    public CharacterService(AnimeService animeService)
+    public CharacterService(AnimeService animeService, ICharacterRepository characterRepository)
     {
+        _characterRepository = characterRepository;
         _animeService = animeService;
     }
 
@@ -21,7 +24,6 @@ public class CharacterService
         character.CreatedAt = DateTime.UtcNow;
 
         anime.Characters.Add(character);
-
         
     }
 }

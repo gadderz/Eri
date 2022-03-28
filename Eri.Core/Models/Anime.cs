@@ -1,5 +1,4 @@
-﻿using Eri.MongoDB.Interfaces;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.ObjectModel;
 
 namespace Eri.Core.Models;

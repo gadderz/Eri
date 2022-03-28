@@ -1,8 +1,7 @@
 ﻿using Eri.Core.Interfaces.Repository;
 using Eri.Core.Models;
-using System;
 
-namespace Eri.Core.Database.Repository;
+namespace Eri.Database.Repository;
 
 public class AnimeRepository : IAnimeRepository
 {

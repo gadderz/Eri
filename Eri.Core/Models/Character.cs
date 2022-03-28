@@ -2,7 +2,7 @@
 
 namespace Eri.Core.Models;
 
-public class Character : BaseModel
+public class Character : BaseModel<Guid>
 {
     [BsonRequired]
     public string Name { get; set; }
