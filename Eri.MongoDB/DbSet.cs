@@ -25,9 +25,14 @@ public class DbSet<TEntity, TId> : IDbSet<TEntity, TId>
 
         return _context._database.GetCollection<TEntity>(collectionName);
     }
+
+    private async Task<BulkWriteResult<TEntity>> BulkWriteAsync(IEnumerable<WriteModel<TEntity>> models)
+    {
+        return await _collection.BulkWriteAsync(models);
+    }
     #endregion
 
-    #region Repository functions
+    #region Implemented functions
     public virtual IQueryable<TEntity> AsQueryable()
     {
         return _collection.AsQueryable();
@@ -73,14 +78,23 @@ public class DbSet<TEntity, TId> : IDbSet<TEntity, TId>
         return await _collection.Find(filterExpression).FirstOrDefaultAsync();
     }
 
-    public virtual async Task InsertAsync(TEntity document)
+    public virtual async ValueTask<long> InsertAsync(TEntity document)
     {
-        await _collection.InsertOneAsync(document);
+        List<WriteModel<TEntity>> models = new() { new InsertOneModel<TEntity>(document) };
+
+        return (await BulkWriteAsync(models)).InsertedCount;
     }
 
-    public virtual async Task InsertAsync(IEnumerable<TEntity> documents)
+    public virtual async ValueTask<long> InsertAsync(IEnumerable<TEntity> documents)
     {
-        await _collection.InsertManyAsync(documents);
+        List<WriteModel<TEntity>> models = new();
+
+        foreach (var doc in documents)
+        {
+            models.Add(new InsertOneModel<TEntity>(doc));
+        }
+
+        return (await BulkWriteAsync(models)).InsertedCount;
     }
 
     public virtual async Task ReplaceAsync(TEntity document)

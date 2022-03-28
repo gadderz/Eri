@@ -19,9 +19,9 @@ public interface IDbSet<TEntity, TId>
 
     Task<TEntity> FindByIdAsync(TId id);
 
-    Task InsertAsync(TEntity document);
+    ValueTask<long> InsertAsync(TEntity document);
 
-    Task InsertAsync(IEnumerable<TEntity> documents);
+    ValueTask<long> InsertAsync(IEnumerable<TEntity> documents);
 
     Task ReplaceAsync(TEntity document);
 

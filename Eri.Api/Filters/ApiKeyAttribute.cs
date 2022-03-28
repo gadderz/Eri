@@ -10,9 +10,9 @@ public class ApiKeyAttribute : Attribute, IAsyncActionFilter
 
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        //var env = context.HttpContext.RequestServices.GetRequiredService<IWebHostEnvironment>();
-        //if (env.IsDevelopment())
-        //    return;
+        var env = context.HttpContext.RequestServices.GetRequiredService<IWebHostEnvironment>();
+        if (env.IsDevelopment())
+            return;
 
 
         if (!context.HttpContext.Request.Headers.TryGetValue(ApiKeyHeader, out var potentialApiKey))

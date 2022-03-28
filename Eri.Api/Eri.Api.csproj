@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Eri.Api.Web\Eri.Api.Web.csproj" />
+    <ProjectReference Include="..\Eri.Core\Eri.Core.csproj" />
+    <ProjectReference Include="..\Eri.Database\Eri.Database.csproj" />
+  </ItemGroup>
+
 </Project>
