@@ -97,19 +97,27 @@ public class DbSet<TEntity, TId> : IDbSet<TEntity, TId>
         return (await BulkWriteAsync(models)).InsertedCount;
     }
 
-    public virtual async Task ReplaceAsync(TEntity document)
+    public virtual async ValueTask<long> ReplaceAsync(TEntity document)
     {
         var filter = Builders<TEntity>.Filter.Eq(doc => doc.Id, document.Id);
-        await _collection.FindOneAndReplaceAsync(filter, document);
+
+        List<WriteModel<TEntity>> models = new() { new ReplaceOneModel<TEntity>(filter ,document) };
+
+        return (await BulkWriteAsync(models)).ModifiedCount;
     }
 
-    public virtual async Task ReplaceAsync(IEnumerable<TEntity> documents)
+    public virtual async ValueTask<long> ReplaceAsync(IEnumerable<TEntity> documents)
     {
+        List<WriteModel<TEntity>> models = new();
+
         foreach (var document in documents)
         {
             var filter = Builders<TEntity>.Filter.Eq(doc => doc.Id, document.Id);
-            await _collection.FindOneAndReplaceAsync(filter, document);
+
+            models.Add(new ReplaceOneModel<TEntity>(filter, document));
         }
+
+        return (await BulkWriteAsync(models)).ModifiedCount;
     }
     #endregion
 

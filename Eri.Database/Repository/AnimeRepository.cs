@@ -17,13 +17,13 @@ public class AnimeRepository : IAnimeRepository
         return await _context.Anime.FindByIdAsync(id);
     }
 
-    public async Task InsertAsync(Anime anime)
+    public async Task<bool> InsertAsync(Anime anime)
     {
-        await _context.Anime.InsertAsync(anime);
+        return (await _context.Anime.InsertAsync(anime)) == 1;
     }
 
-    public async Task ReplaceAsync(Anime anime)
+    public async Task<bool> ReplaceAsync(Anime anime)
     {
-        await _context.Anime.ReplaceAsync(anime);
+        return (await _context.Anime.ReplaceAsync(anime)) == 1;
     }
 }

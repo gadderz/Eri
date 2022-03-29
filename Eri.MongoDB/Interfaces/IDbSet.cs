@@ -23,9 +23,9 @@ public interface IDbSet<TEntity, TId>
 
     ValueTask<long> InsertAsync(IEnumerable<TEntity> documents);
 
-    Task ReplaceAsync(TEntity document);
+    ValueTask<long> ReplaceAsync(TEntity document);
 
-    Task ReplaceAsync(IEnumerable<TEntity> documents);
+    ValueTask<long> ReplaceAsync(IEnumerable<TEntity> documents);
 
     Task DeleteWhereAsync(Expression<Func<TEntity, bool>> filterExpression);
 

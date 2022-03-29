@@ -14,6 +14,6 @@ public class AnimeWebService
 
     public async void InsertAsync(CreateAnime anime)
     {
-        _animeService.InsertAsync(anime);
+        await _animeService.InsertAsync(anime);
     }
 }
