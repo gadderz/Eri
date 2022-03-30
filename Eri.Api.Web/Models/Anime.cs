@@ -6,7 +6,7 @@ public class Anime
 {
     public string Id { get; set; }
     public string Name { get; set; }
-    public Collection<Core.Models.Character> Characters { get; set; }
+    public Collection<Character> Characters { get; set; }
 
     public static implicit operator Core.Models.Anime(Anime source)
     {
@@ -14,7 +14,7 @@ public class Anime
         {
             Id = source.Id,
             Name = source.Name,
-            Characters = source.Characters
+            //Characters = source.Characters
         };
     }
 
@@ -24,7 +24,7 @@ public class Anime
         {
             Id = source.Id,
             Name = source.Name,
-            Characters = source.Characters
+            //Characters = source.Characters
         };
     }
 }

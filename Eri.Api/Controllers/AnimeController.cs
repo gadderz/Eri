@@ -20,7 +20,6 @@ public class AnimeController : ControllerBase
     [HttpPost()]
     public async Task<IActionResult> InsertAsync([FromBody]Anime anime)
     {
-        var a = ModelState.IsValid;
         var response = await _animeWebService.InsertAsync(anime);
 
         if (response.HasErrors)
