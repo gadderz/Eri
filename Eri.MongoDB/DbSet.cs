@@ -38,34 +38,39 @@ public class DbSet<TEntity, TId> : IDbSet<TEntity, TId>
         return _collection.AsQueryable();
     }
 
-    public virtual async Task DeleteAsync(TId id)
+    public virtual async ValueTask<long> DeleteAsync(TId id)
     {
         var filter = Builders<TEntity>.Filter.Eq(doc => doc.Id, id);
-        await _collection.FindOneAndDeleteAsync(filter);
+        var result = await _collection.DeleteOneAsync(filter);
+
+        return result.DeletedCount;
     }
 
-    public virtual async Task DeleteAsync(IEnumerable<TId> ids)
+    public virtual async ValueTask<long> DeleteAsync(IEnumerable<TId> ids)
     {
+        List<WriteModel<TEntity>> models = new();
+
         foreach (var id in ids)
         {
             var filter = Builders<TEntity>.Filter.Eq(doc => doc.Id, id);
-            await _collection.FindOneAndDeleteAsync(filter);
+
+            models.Add(new DeleteOneModel<TEntity>(filter));
         }
+
+        return (await BulkWriteAsync(models)).DeletedCount;
     }
 
-    public virtual async Task DeleteWhereAsync(Expression<Func<TEntity, bool>> filterExpression)
+    public virtual async ValueTask<long> DeleteWhereAsync(Expression<Func<TEntity, bool>> filterExpression)
     {
-        await _collection.DeleteManyAsync(filterExpression);
+        var result = await _collection.DeleteManyAsync(filterExpression);
+
+        return result.DeletedCount;
     }
 
-    public virtual IEnumerable<TEntity> FilterBy(Expression<Func<TEntity, bool>> filterExpression)
+    public virtual async Task<IEnumerable<TEntity>> FilterByAsync(Expression<Func<TEntity, bool>> filterExpression)
     {
-        return _collection.Find(filterExpression).ToEnumerable();
-    }
-
-    public virtual IEnumerable<TProjected> FilterBy<TProjected>(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, TProjected>> projectionExpression)
-    {
-        return _collection.Find(filterExpression).Project(projectionExpression).ToEnumerable();
+        var result =  await _collection.FindAsync(filterExpression);
+        return result.ToEnumerable();
     }
 
     public virtual async Task<TEntity> FindByIdAsync(TId id)
@@ -101,9 +106,9 @@ public class DbSet<TEntity, TId> : IDbSet<TEntity, TId>
     {
         var filter = Builders<TEntity>.Filter.Eq(doc => doc.Id, document.Id);
 
-        List<WriteModel<TEntity>> models = new() { new ReplaceOneModel<TEntity>(filter ,document) };
+        var result = await _collection.ReplaceOneAsync(filter, document);
 
-        return (await BulkWriteAsync(models)).ModifiedCount;
+        return result.ModifiedCount;
     }
 
     public virtual async ValueTask<long> ReplaceAsync(IEnumerable<TEntity> documents)

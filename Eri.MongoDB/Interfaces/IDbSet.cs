@@ -8,12 +8,12 @@ public interface IDbSet<TEntity, TId>
 {
     IQueryable<TEntity> AsQueryable();
 
-    IEnumerable<TEntity> FilterBy(
+    Task<IEnumerable<TEntity>> FilterByAsync(
         Expression<Func<TEntity, bool>> filterExpression);
 
-    IEnumerable<TProjected> FilterBy<TProjected>(
-        Expression<Func<TEntity, bool>> filterExpression,
-        Expression<Func<TEntity, TProjected>> projectionExpression);
+    //IEnumerable<TProjected> FilterBy<TProjected>(
+    //    Expression<Func<TEntity, bool>> filterExpression,
+    //    Expression<Func<TEntity, TProjected>> projectionExpression);
 
     Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filterExpression);
 
@@ -27,9 +27,9 @@ public interface IDbSet<TEntity, TId>
 
     ValueTask<long> ReplaceAsync(IEnumerable<TEntity> documents);
 
-    Task DeleteWhereAsync(Expression<Func<TEntity, bool>> filterExpression);
+    ValueTask<long> DeleteWhereAsync(Expression<Func<TEntity, bool>> filterExpression);
 
-    Task DeleteAsync(TId id);
+    ValueTask<long> DeleteAsync(TId id);
 
-    Task DeleteAsync(IEnumerable<TId> ids);
+    ValueTask<long> DeleteAsync(IEnumerable<TId> ids);
 }
