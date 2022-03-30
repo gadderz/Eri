@@ -18,7 +18,7 @@ public class CharacterService
     public async Task InsertAsync(Character character)
     {
         var anime = await _animeService.GetByIdAsync(character.Anime.Id);
-        if (anime == null)
+        if (anime is null)
             throw new Exception($"Anime with id {character.Anime.Id} not found.");
 
         character.CreatedAt = DateTime.UtcNow;

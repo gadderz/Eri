@@ -8,16 +8,14 @@ namespace Eri.Api.Controllers;
 [Route("[controller]/[action]")]
 public class CharacterController : ControllerBase
 {
-    private readonly ILogger<CharacterController> _logger;
 
-    public CharacterController(ILogger<CharacterController> logger)
+    public CharacterController()
     {
-        _logger = logger;
     }
 
     [HttpPost]
     public async Task<IActionResult> InsertAsync()
     {
-
+        return Ok();
     }
 }

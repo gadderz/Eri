@@ -1,5 +1,6 @@
 ﻿using Eri.Api.Filters;
 using Eri.Api.Web.Models;
+using Eri.Api.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers;
@@ -9,19 +10,22 @@ namespace Eri.Api.Controllers;
 [Route("[controller]/[action]")]
 public class AnimeController : ControllerBase
 {
-    private readonly ILogger<AnimeController> _logger;
+    private readonly AnimeWebService _animeWebService;
 
-    public AnimeController(ILogger<AnimeController> logger)
+    public AnimeController(AnimeWebService animeWebService)
     {
-        _logger = logger;
+        _animeWebService = animeWebService;
     }
 
-    [HttpPost]
-    public async Task<IActionResult> InsertAsync(CreateAnime anime)
+    [HttpPost()]
+    public async Task<IActionResult> InsertAsync([FromBody]Anime anime)
     {
-        if(!ModelState.IsValid)
-            return BadRequest(ModelState);
+        var a = ModelState.IsValid;
+        var response = await _animeWebService.InsertAsync(anime);
 
+        if (response.HasErrors)
+            return BadRequest(response.ToStringErrors());
 
+        return CreatedAtAction("teste", "foi");
     }
 }

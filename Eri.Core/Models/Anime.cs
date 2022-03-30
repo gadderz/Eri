@@ -8,6 +8,6 @@ public class Anime : BaseModel
     [BsonRequired]
     public string Name { get; set; }
 
-    [BsonIgnoreIfDefault]
+    [BsonRequired]
     public Collection<Character> Characters { get; set; } = new Collection<Character>();
 }

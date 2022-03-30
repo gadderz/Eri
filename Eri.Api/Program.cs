@@ -8,6 +8,7 @@ builder.Services.AddSwagger();
 builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddRepositories();
 builder.Services.AddCoreServices();
+builder.Services.AddWebServices();
 
 var app = builder.Build();
 

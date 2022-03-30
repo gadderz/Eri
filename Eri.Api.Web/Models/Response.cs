@@ -1,10 +1,9 @@
-﻿namespace Eri.Core.Models;
+﻿namespace Eri.Api.Web.Models;
 
 public class Response
 {
     public Response()
     {
-        Errors = new List<string>();
     }
 
     public Response(string error)
@@ -13,14 +12,14 @@ public class Response
     }
 
     public bool HasErrors { get => Errors.Any(); }
-    public List<string> Errors { get; }
+    public List<string> Errors { get; } = new List<string>();
 
     public string ToStringErrors()
     {
         var errors = string.Empty;
         foreach (var error in Errors)
         {
-            errors += error;
+            errors += $"{error}\n\n";
         }
 
         return errors;
