@@ -1,4 +1,5 @@
 using Eri.Api.Configuration;
+using Eri.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +25,8 @@ app.UseCors(c =>
     c.AllowAnyHeader();
 });
 
-app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.MapControllers();
 

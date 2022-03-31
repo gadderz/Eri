@@ -1,11 +1,9 @@
-﻿using Eri.Api.Filters;
-using Eri.Api.Web.Models;
+﻿using Eri.Api.Web.Models;
 using Eri.Api.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers;
 
-[ApiKey]
 [ApiController]
 [Route("[controller]/[action]")]
 public class AnimeController : ControllerBase

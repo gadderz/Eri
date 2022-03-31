@@ -1,9 +1,7 @@
-﻿using Eri.Api.Filters;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers;
 
-[ApiKey]
 [ApiController]
 [Route("[controller]/[action]")]
 public class CharacterController : ControllerBase
