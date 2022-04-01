@@ -1,10 +1,12 @@
-﻿namespace Eri.Api.Web.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Eri.Api.Web.Models;
 
 public class Character
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public char Gender { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public Anime Anime { get; set; }
 
     public static explicit operator Core.Models.Character(Character source)
@@ -13,7 +15,6 @@ public class Character
         {
             Id = source.Id,
             Name = source.Name,
-            Gender = source.Gender,
             Anime = (Core.Models.Anime)source.Anime
         };
     }
@@ -24,7 +25,6 @@ public class Character
         {
             Id = source.Id,
             Name = source.Name,
-            Gender = source.Gender,
             Anime = (Anime)source.Anime
         };
     }

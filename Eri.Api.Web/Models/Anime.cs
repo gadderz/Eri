@@ -7,6 +7,7 @@ public class Anime
 {
     public string Id { get; set; }
     public string Name { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public Collection<Character> Characters { get; set; }
 
     public static explicit operator Core.Models.Anime(Anime source)

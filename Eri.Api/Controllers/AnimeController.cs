@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers;
 
-[ApiController]
 [Route("[controller]/[action]")]
 public class AnimeController : ControllerBase
 {
@@ -23,6 +22,6 @@ public class AnimeController : ControllerBase
         if (response.HasErrors)
             return BadRequest(response.ToStringErrors());
 
-        return CreatedAtAction("teste", "foi");
+        return Ok();
     }
 }

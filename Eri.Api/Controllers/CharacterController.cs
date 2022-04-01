@@ -2,7 +2,6 @@
 
 namespace Eri.Api.Controllers;
 
-[ApiController]
 [Route("[controller]/[action]")]
 public class CharacterController : ControllerBase
 {
