@@ -7,24 +7,25 @@ public class Character
     public char Gender { get; set; }
     public Anime Anime { get; set; }
 
-    public static implicit operator Core.Models.Character(Character source)
+    public static explicit operator Core.Models.Character(Character source)
     {
         return new Core.Models.Character()
         {
             Id = source.Id,
             Name = source.Name,
-            Gender = source.Gender
+            Gender = source.Gender,
+            Anime = (Core.Models.Anime)source.Anime
         };
     }
 
-    public static implicit operator Character(Core.Models.Character source)
+    public static explicit operator Character(Core.Models.Character source)
     {
         return new Character()
         {
             Id = source.Id,
             Name = source.Name,
             Gender = source.Gender,
-            Anime = source.Anime
+            Anime = (Anime)source.Anime
         };
     }
 }

@@ -14,6 +14,6 @@ public class CharacterController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> InsertAsync()
     {
-        return Ok();
+        return BadRequest();
     }
 }

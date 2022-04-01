@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace Eri.Api.Web.Models;
 
@@ -8,23 +9,27 @@ public class Anime
     public string Name { get; set; }
     public Collection<Character> Characters { get; set; }
 
-    public static implicit operator Core.Models.Anime(Anime source)
+    public static explicit operator Core.Models.Anime(Anime source)
     {
-        return new Core.Models.Anime()
-        {
-            Id = source.Id,
-            Name = source.Name,
-            //Characters = source.Characters
-        };
+        var res = new Core.Models.Anime();
+        res.Id = source.Id;
+        res.Name = source.Name;
+
+        foreach (var character in source.Characters)
+            res.Characters.Add((Core.Models.Character)character);
+
+        return res;
     }
 
-    public static implicit operator Anime(Core.Models.Anime source)
+    public static explicit operator Anime(Core.Models.Anime source)
     {
-        return new Anime()
-        {
-            Id = source.Id,
-            Name = source.Name,
-            //Characters = source.Characters
-        };
+        var res = new Anime();
+        res.Id = source.Id;
+        res.Name = source.Name;
+
+        foreach (var character in source.Characters)
+            res.Characters.Add((Character)character);
+
+        return res;
     }
 }

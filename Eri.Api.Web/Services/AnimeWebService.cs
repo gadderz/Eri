@@ -28,7 +28,7 @@ public class AnimeWebService
 
         try
         {
-            await _animeService.InsertAsync(anime);
+            await _animeService.InsertAsync((Core.Models.Anime)anime);
         }
         catch (Exception e)
         {
