@@ -14,7 +14,7 @@ public class AnimeController : ControllerBase
         _animeWebService = animeWebService;
     }
 
-    [HttpPost()]
+    [HttpPost]
     public async Task<IActionResult> InsertAsync([FromBody]Anime anime)
     {
         var response = await _animeWebService.InsertAsync(anime);

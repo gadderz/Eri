@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eri.MongoDB", "Eri.MongoDB\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eri.Core", "Eri.Core\Eri.Core.csproj", "{D16C2319-5424-4C4F-904E-6F627D8E2E5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eri.Database", "Eri.Database\Eri.Database.csproj", "{7ED67850-604B-4267-826F-DB541916CAE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eri.Database", "Eri.Database\Eri.Database.csproj", "{7ED67850-604B-4267-826F-DB541916CAE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eri.Api.Web", "Eri.Api.Web\Eri.Api.Web.csproj", "{009E9324-A85D-463C-9CEB-B2E54B248A60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eri.Api.Web", "Eri.Api.Web\Eri.Api.Web.csproj", "{009E9324-A85D-463C-9CEB-B2E54B248A60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eri.Core.Scraping", "Eri.Core.Scraping\Eri.Core.Scraping.csproj", "{9443CEBC-D1DB-44E3-83B1-E7A558DA8BA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{009E9324-A85D-463C-9CEB-B2E54B248A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009E9324-A85D-463C-9CEB-B2E54B248A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009E9324-A85D-463C-9CEB-B2E54B248A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9443CEBC-D1DB-44E3-83B1-E7A558DA8BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9443CEBC-D1DB-44E3-83B1-E7A558DA8BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9443CEBC-D1DB-44E3-83B1-E7A558DA8BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9443CEBC-D1DB-44E3-83B1-E7A558DA8BA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
