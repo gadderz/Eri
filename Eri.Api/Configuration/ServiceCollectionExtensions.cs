@@ -59,5 +59,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddTransient<AnimeWebService>();
         services.AddTransient<CharacterWebService>();
+        services.AddTransient<ScrapingWebService>();
     }
 }

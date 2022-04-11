@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eri.Api.Web\Eri.Api.Web.csproj" />
+    <ProjectReference Include="..\Eri.Core.Scraping\Eri.Core.Scraping.csproj" />
     <ProjectReference Include="..\Eri.Core\Eri.Core.csproj" />
     <ProjectReference Include="..\Eri.Database\Eri.Database.csproj" />
   </ItemGroup>

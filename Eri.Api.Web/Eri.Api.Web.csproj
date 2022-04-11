@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Eri.Core.Scraping\Eri.Core.Scraping.csproj" />
     <ProjectReference Include="..\Eri.Core\Eri.Core.csproj" />
   </ItemGroup>
 

@@ -24,13 +24,13 @@ public static class ServiceCollectionExtensions
     {
         services.AddHttpClient<JikanClient>(o =>
         {
-            o.BaseAddress = new Uri(configuration["Clients:Jikan"]);
+            o.BaseAddress = new Uri(configuration["JikanBaseUri"]);
         })
             .AddPolicyHandler(GetRetryHttpPolicy());
     }
 
-    public static void AddScrapping()
+    public static void AddScrapping(this IServiceCollection services)
     {
-
+        services.AddTransient<Jikan>();
     }
 }

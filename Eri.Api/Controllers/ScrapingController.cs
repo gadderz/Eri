@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Eri.Api.Web.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers
 {
@@ -6,9 +7,18 @@ namespace Eri.Api.Controllers
     public class ScrapingController : ControllerBase
     {
 
+        private readonly ScrapingWebService _scrapingService;
+
+        public ScrapingController(ScrapingWebService scrapingService)
+        {
+            _scrapingService = scrapingService;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Anime()
         {
+            await _scrapingService.AnimeAsync();
+
             return Ok();
         }
 
