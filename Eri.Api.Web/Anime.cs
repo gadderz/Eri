@@ -1,19 +1,18 @@
 ﻿using Eri.Api.Web.Models;
 using Eri.Api.Web.Validators;
-using Eri.Core.Services;
 
-namespace Eri.Api.Web.Services;
+namespace Eri.Api.Web;
 
-public class AnimeWebService
+public class Anime
 {
-    private readonly AnimeService _animeService;
+    private readonly Core.Anime _animeService;
 
-    public AnimeWebService(AnimeService animeService)
+    public Anime(Core.Anime animeService)
     {
         _animeService = animeService;
     }
 
-    public async Task<Response> InsertAsync(Anime anime)
+    public async Task<Response> InsertAsync(Models.Anime anime)
     {
         var validator = new CreateAnimeValidator();
         var validationResult = validator.Validate(anime);

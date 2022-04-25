@@ -5,8 +5,8 @@ namespace Eri.Core.Interfaces.Repository
 {
     public interface IAnimeRepository
     {
-        Task<bool> InsertAsync(Anime anime);
-        Task<Anime> GetByIdAsync(string id);
-        Task<bool> ReplaceAsync(Anime anime);
+        Task<bool> InsertAsync(Models.Anime anime);
+        Task<Models.Anime> GetByIdAsync(string id);
+        Task<bool> ReplaceAsync(Models.Anime anime);
     }
 }

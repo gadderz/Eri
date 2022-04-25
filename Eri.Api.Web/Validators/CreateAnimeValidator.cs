@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Eri.Api.Web.Validators;
 
-public class CreateAnimeValidator : AbstractValidator<Anime>
+public class CreateAnimeValidator : AbstractValidator<Models.Anime>
 {
     public CreateAnimeValidator()
     {

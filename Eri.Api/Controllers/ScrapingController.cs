@@ -1,4 +1,4 @@
-﻿using Eri.Api.Web.Services;
+﻿using Eri.Api.Web;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers
@@ -7,9 +7,9 @@ namespace Eri.Api.Controllers
     public class ScrapingController : ControllerBase
     {
 
-        private readonly ScrapingWebService _scrapingService;
+        private readonly Scraping _scrapingService;
 
-        public ScrapingController(ScrapingWebService scrapingService)
+        public ScrapingController(Scraping scrapingService)
         {
             _scrapingService = scrapingService;
         }

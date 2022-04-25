@@ -1,5 +1,4 @@
-﻿using Eri.Api.Web.Models;
-using Eri.Api.Web.Services;
+﻿using Eri.Api.Web;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eri.Api.Controllers;
@@ -7,15 +6,15 @@ namespace Eri.Api.Controllers;
 [Route("[controller]/[action]")]
 public class AnimeController : ControllerBase
 {
-    private readonly AnimeWebService _animeWebService;
+    private readonly Anime _animeWebService;
 
-    public AnimeController(AnimeWebService animeWebService)
+    public AnimeController(Anime animeWebService)
     {
         _animeWebService = animeWebService;
     }
 
     [HttpPost]
-    public async Task<IActionResult> InsertAsync([FromBody]Anime anime)
+    public async Task<IActionResult> InsertAsync([FromBody]Web.Models.Anime anime)
     {
         var response = await _animeWebService.InsertAsync(anime);
 

@@ -1,6 +1,6 @@
-﻿using Eri.Api.Web.Services;
+﻿using Eri.Api.Web;
 using Eri.Core.Interfaces.Repository;
-using Eri.Core.Services;
+using Eri.Core;
 using Eri.Database;
 using Eri.Database.Repository;
 using System.Text.Encodings.Web;
@@ -51,14 +51,14 @@ public static class ServiceCollectionExtensions
 
     public static void AddCoreServices(this IServiceCollection services)
     {
-        services.AddTransient<AnimeService>();
-        services.AddTransient<CharacterService>();
+        services.AddTransient<Core.Anime>();
+        services.AddTransient<Core.Character>();
     }
 
     public static void AddWebServices(this IServiceCollection services)
     {
-        services.AddTransient<AnimeWebService>();
-        services.AddTransient<CharacterWebService>();
-        services.AddTransient<ScrapingWebService>();
+        services.AddTransient<Web.Anime>();
+        services.AddTransient<Web.Character>();
+        services.AddTransient<Web.Scraping>();
     }
 }

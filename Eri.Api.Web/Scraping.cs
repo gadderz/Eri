@@ -1,13 +1,12 @@
 ﻿using Eri.Core.Scraping;
-using System;
 
-namespace Eri.Api.Web.Services;
+namespace Eri.Api.Web;
 
-public class ScrapingWebService
+public class Scraping
 {
     private readonly Jikan _jikan;
 
-    public ScrapingWebService(Jikan jikan)
+    public Scraping(Jikan jikan)
     {
         _jikan = jikan;
     }

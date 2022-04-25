@@ -1,25 +1,24 @@
 ﻿using Eri.Core.Interfaces.Repository;
-using Eri.Core.Models;
 
-namespace Eri.Core.Services;
+namespace Eri.Core;
 
-public class AnimeService
+public class Anime
 {
     private readonly IAnimeRepository _animeRepository;
 
-    public AnimeService(IAnimeRepository animeRepository)
+    public Anime(IAnimeRepository animeRepository)
     {
         _animeRepository = animeRepository;
     }
 
-    public async Task InsertAsync(Anime anime)
+    public async Task InsertAsync(Models.Anime anime)
     {
         anime.CreatedAt = DateTime.UtcNow;
         if (!await _animeRepository.InsertAsync(anime))
             throw new Exception();
     }
 
-    public async Task<Anime> GetByIdAsync(string id)
+    public async Task<Models.Anime> GetByIdAsync(string id)
     {
         var result = await _animeRepository.GetByIdAsync(id);
 

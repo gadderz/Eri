@@ -1,21 +1,19 @@
 ﻿using Eri.Core.Interfaces.Repository;
-using Eri.Core.Models;
-using System;
 
-namespace Eri.Core.Services;
+namespace Eri.Core;
 
-public class CharacterService
+public class Character
 {
     public readonly ICharacterRepository _characterRepository;
-    public readonly AnimeService _animeService;
+    public readonly Anime _animeService;
 
-    public CharacterService(AnimeService animeService, ICharacterRepository characterRepository)
+    public Character(Anime animeService, ICharacterRepository characterRepository)
     {
         _characterRepository = characterRepository;
         _animeService = animeService;
     }
 
-    public async Task InsertAsync(Character character)
+    public async Task InsertAsync(Models.Character character)
     {
         var anime = await _animeService.GetByIdAsync(character.Anime.Id);
         if (anime is null)
