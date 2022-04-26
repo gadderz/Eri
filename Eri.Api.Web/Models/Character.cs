@@ -5,7 +5,9 @@ namespace Eri.Api.Web.Models;
 public class Character
 {
     public Guid Id { get; set; }
+
     public string Name { get; set; }
+
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public Anime Anime { get; set; }
 

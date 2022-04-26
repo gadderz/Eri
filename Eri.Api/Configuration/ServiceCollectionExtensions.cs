@@ -1,6 +1,4 @@
-﻿using Eri.Api.Web;
-using Eri.Core.Interfaces.Repository;
-using Eri.Core;
+﻿using Eri.Core.Interfaces.Repository;
 using Eri.Database;
 using Eri.Database.Repository;
 using System.Text.Encodings.Web;

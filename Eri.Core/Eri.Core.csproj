@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Eri.MongoDB\Eri.MongoDB.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

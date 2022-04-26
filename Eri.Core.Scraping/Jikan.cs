@@ -13,6 +13,6 @@ public class Jikan
 
     public async Task GetAnimesAsync()
     {
-        var result = await _client.GetAnimesPagingOrDefaultAsync(1,100);
+        var result = await _client.GetAnimesOrDefaultAsync(1,100);
     }
 }
